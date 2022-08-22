@@ -1,0 +1,32 @@
+.container-login{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 20em auto;
+}
+
+.container-login input {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    border: 1px solid rgb(170, 163, 163);
+    outline: none;
+}
+
+.container-login button{
+    padding:  10px;
+    background-color: rgb(107, 152, 204);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container-login a{
+    font-size: 14px;
+    text-decoration: none;
+    color: rgb(49, 125, 211);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 7px;
+}

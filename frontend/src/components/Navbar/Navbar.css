@@ -1,0 +1,63 @@
+nav{
+    padding: 2px;
+    display: flex;
+    justify-content:space-between;
+}
+
+nav li{
+    list-style: none;
+    display: inline;
+    display: flex;
+}
+
+nav a{
+    color: rgb(112, 160, 223);
+    margin: 0 10px;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+
+nav a:hover{
+    text-decoration: none;
+    color: rgb(92, 148, 221);
+}
+
+#hr-nav{
+    border: 1px solid rgb(222, 226, 233);
+    border-top: 0;
+}
+
+.main-nav{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.auth-nav{
+    display: inline;
+    margin-right: 30px;
+}
+
+.main-nav li{
+    display: inline;
+}
+
+.auth-nav{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+#btn-logout{
+    background-color: transparent;
+    border: none;
+    color: rgb(112, 160, 223);
+    cursor: pointer;    
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#btn-logout:hover{
+    color: rgb(112, 160, 223);
+}

@@ -5,15 +5,20 @@ import User from '../models/user';
 import signJWT from '../utils/signJWT';
 
 const validateToken = (req: Request, res: Response, next: NextFunction) => {
+    
     return res.status(200).json({
         message: 'Token validated'
     });
 };
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
-    let { email, password, confirmPassword } = req.body;
+    let { name, email, password, confirmPassword } = req.body;
 
     const userExists = await User.findOne({ email: email });
+
+    if(!name){
+        return res.status(409).json({ message: 'Name is required' });
+    }
 
     if (userExists) {
         return res.status(409).json({ message: 'Email already in use' });
@@ -44,6 +49,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 
         const _user = new User({
             _id: new mongoose.Types.ObjectId(),
+            name,
             email,
             password: hash
         });
