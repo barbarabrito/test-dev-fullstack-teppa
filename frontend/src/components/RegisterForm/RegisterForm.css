@@ -1,6 +1,7 @@
 .form-register button{
    background-color: transparent;
-   color:rgb(100, 100, 100);
+   color: rgb(107, 152, 204);
+   font-size: 18px;
 }
 
 .form-container-register label{
@@ -18,4 +19,8 @@
 
 .label-form{
     margin-bottom: 8px;
+}
+
+.container-msg p{
+    color: rgb(226, 80, 80);
 }

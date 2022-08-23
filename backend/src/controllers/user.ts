@@ -3,12 +3,13 @@ import bcrypt from 'bcryptjs';
 import mongoose from 'mongoose';
 import User from '../models/user';
 import signJWT from '../utils/signJWT';
+import extractJWT from '../middleware/extractJWT';
+import { config } from '../config/config';
+import jwt from 'jsonwebtoken';
+
 
 const validateToken = (req: Request, res: Response, next: NextFunction) => {
-    
-    return res.status(200).json({
-        message: 'Token validated'
-    });
+   extractJWT
 };
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
@@ -117,6 +118,6 @@ const getAllUsers = (req: Request, res: Response, next: NextFunction) => {
                 error
             });
         });
-};
+}; 
 
 export default { validateToken, register, login, getAllUsers };

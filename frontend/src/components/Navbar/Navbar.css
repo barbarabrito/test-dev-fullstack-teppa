@@ -49,7 +49,7 @@ nav a:hover{
     align-items: center;
 }
 
-#btn-logout{
+#btn-logout, #login{
     background-color: transparent;
     border: none;
     color: rgb(112, 160, 223);

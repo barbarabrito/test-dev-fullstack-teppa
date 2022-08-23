@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { AuthContext } from './contexts/Auth/AuthContext';
 import Navbar from './components/Navbar/Navbar';
 import Register from './pages/Register/Register';
+import { Profile } from './pages/Profile/Profile';
 
 function App() {
 
@@ -18,7 +19,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/register" element={<Register/>} />
-                <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} />
+                <Route path="/private" element={<RequireAuth><Private /></RequireAuth>}/>
+                <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
             </Routes>
         </div>
     )

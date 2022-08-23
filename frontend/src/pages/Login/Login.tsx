@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Logo from '../../assets/shortcut-script-app.png'
 
 import './Login.css';
 
@@ -12,18 +13,28 @@ export const Login = () => {
     const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
+
         if (email && password) {
-            const isLogged = await auth.signin(email, password);
-            if (isLogged) {
-                navigate("/private");
-            } else {
-                alert("something went wrong");
+            try {
+                const isLogged = await auth.signin(email, password);
+                if (isLogged) {
+                    navigate("/private");
+                } else {
+                    alert("something went wrong");
+                }
+            } catch (error) {
+                console.log(error);
             }
         }
     };
 
+
     return (
         <div className="container-login">
+            <div className="container-logo">
+                <img src={Logo} alt="logo" id="logo"></img>
+            </div>
+            
             <input
                 type="text"
                 value={email}

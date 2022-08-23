@@ -1,9 +1,27 @@
-const PasswordInput = ({ formData, setFormData }: any ) => {
+import { useEffect, useState } from "react";
+
+const PasswordInput = ({ formData, setFormData, setDisableNext }: any) => {
+
+    const passwordRegex = /^\s+$/
+    const [msg, setShowMessage] = useState('');
+
+    useEffect(() => {
+        if ((passwordRegex.test(formData.password)) || (passwordRegex.test(formData.confirmPassword))
+        || !formData.password || !formData.confirmPassword || (formData.password !== formData.confirmPassword)) {
+
+            setDisableNext(true);
+            setShowMessage('*A senhas precisam coincidir')
+
+        } else {
+            setDisableNext(false)
+        }
+    }, [formData.password, formData.confirmPassword]);
+
     return (
         <div className="form-container-register">
             <div className="label-form">
                 <label>Choose a password</label>
-            </div>    
+            </div>
             <input
                 type="text"
                 placeholder="Password..."
@@ -20,6 +38,9 @@ const PasswordInput = ({ formData, setFormData }: any ) => {
                     setFormData({ ...formData, confirmPassword: event.target.value })
                 }
             />
+            <div className="container-msg">
+                <p><small>{msg}</small></p>
+            </div>
         </div>
     )
 }

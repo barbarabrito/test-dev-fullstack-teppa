@@ -17,13 +17,14 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
             if (storageData) {
                 const data = await api.validateToken(storageData);
                 // console.log(storageData)
-                if (data) {
+                if (data.user) {
                     setAuthenticated(true)
+                    setUser(data.user)
                 }
             }
         }
         validateToken();
-    }, [api]);
+    }, []);
 
     const signin = async(email: string, password: string) => {
         const data = await api.signin(email, password);
@@ -31,9 +32,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
         if (data.user && data.token){
             
             setUser(data.user);
-            console.log(data.user)
             setToken(data.token);
-            console.log(data.token);
             return true;
         }
         return false;

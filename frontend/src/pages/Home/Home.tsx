@@ -1,10 +1,10 @@
 import { Login } from '../Login/Login';
-import './Home.css'
+import './Home.css';
 
 export const Home = () => {
-    return(
+    return (
         <div className="main-container">
-            <Login/>
+            <Login />
         </div>
     );
 }

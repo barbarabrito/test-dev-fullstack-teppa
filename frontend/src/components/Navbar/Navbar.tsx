@@ -19,15 +19,17 @@ const Navbar = () => {
                         <li>
                             <Link to="/">Home</Link>
                         </li>
+                        {auth.authenticated &&
                         <li>
                             <Link to="/private">Dashboard</Link>
-                        </li>
+                        </li>}
                     </ul>
                 </div>
                 <div className="auth-nav">
                     <ul>
                         <li>
-                            {auth.authenticated && <button id="btn-logout" onClick={handleLogout}>Sair</button>}
+                            {auth.authenticated ? <button id="btn-logout" onClick={handleLogout}>Sair</button> :
+                            <Link id="btn-login" to="/">Login</Link> }
                         </li>
                     </ul>
                 </div>

@@ -1,4 +1,19 @@
-const NameInput = ({ formData, setFormData }:any) => {
+import { useEffect, useState } from "react";
+
+const NameInput = ({ formData, setFormData, disableNext, setDisableNext }: any) => {
+
+    const nameRegex = /^\s+$/
+    const [msg, setShowMessage] = useState('');
+
+    useEffect(() => {
+        if ((nameRegex.test(formData.name)) || !formData.name) {
+            setDisableNext(true)
+            setShowMessage('*Este campo é obrigatório')
+        } else {
+            setDisableNext(false)
+        }
+    }, [formData.name]);
+
     return (
         <div className="form-container-register">
             <div className="label-form">
@@ -11,6 +26,9 @@ const NameInput = ({ formData, setFormData }:any) => {
                     setFormData({ ...formData, name: event.target.value })
                 }
             />
+            <div className="container-msg">
+                <p><small>{msg}</small></p>
+            </div>
         </div>
     )
 }

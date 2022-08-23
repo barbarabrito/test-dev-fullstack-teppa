@@ -20,11 +20,6 @@ export const useApi = () => ({
 
         const response = await api.post('/users/validate', `Bearer ${token}`,{ headers: {"Authorization" : `Bearer ${token}`} });
         return response.data;
-        // return {user: {id: 1, name: 'maria', email: 'maria@email.com', message: message}};
-        
-        // return {
-        //     user: {id: 1, name: 'maria', email: 'maria@email.com'}
-        // }
     },
     register: async (name: string, email: string, password: string, confirmPassword:string) => {
         const response = await api.post('/users/register', {name, email, password, confirmPassword});
