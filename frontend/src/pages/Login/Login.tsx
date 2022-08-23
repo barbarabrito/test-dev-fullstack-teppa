@@ -19,6 +19,7 @@ export const Login = () => {
                 const isLogged = await auth.signin(email, password);
                 if (isLogged) {
                     navigate("/private");
+                    window.location.href = window.location.href;   
                 } else {
                     alert("something went wrong");
                 }

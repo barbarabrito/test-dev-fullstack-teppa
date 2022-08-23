@@ -3,6 +3,7 @@ import http from 'http';
 import mongoose from 'mongoose';
 import { config } from './config/config';
 import userRoutes from './routes/user';
+import todoRoutes from './routes/todo';
 
 const router = express();
 
@@ -30,6 +31,7 @@ router.use((req, res, next) => {
 });
 
 router.use('/users', userRoutes);
+router.use('/todo', todoRoutes);
 
 router.use((req, res, next) => {
     const error = new Error('Not found');

@@ -4,6 +4,7 @@ import jwt, { decode } from 'jsonwebtoken';
 import User from '../models/user';
 
 const extractJWT = (req: Request, res: Response, next: NextFunction) => {
+
     let token = req.headers.authorization?.split(' ')[1];
 
     if (token) {
@@ -18,9 +19,11 @@ const extractJWT = (req: Request, res: Response, next: NextFunction) => {
                 let user;
 
                 res.locals.jwt = decoded;
-                
-                 user = await User.findOne({email: res.locals.jwt.email}).select('-password')
-                 
+
+                console.log(decoded)
+
+                user = await User.findOne({ email: res.locals.jwt.email }).select('-password')
+
                 return res.status(200).json({
                     user
                 });

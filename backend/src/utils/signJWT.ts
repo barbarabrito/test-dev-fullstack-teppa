@@ -5,7 +5,7 @@ import IUser from '../interfaces/user';
 const signJWT = (user: IUser, callback: (error: Error | null, token: string | null) => void): void => {
     try {
         jwt.sign(
-            { email: user.email, name: user.name},
+            { email: user.email, name: user.name, id: user._id },
             config.token.secret,
             {
                 algorithm: 'HS256',

@@ -4,12 +4,42 @@ import mongoose from 'mongoose';
 import User from '../models/user';
 import signJWT from '../utils/signJWT';
 import extractJWT from '../middleware/extractJWT';
-import { config } from '../config/config';
 import jwt from 'jsonwebtoken';
+import { config } from '../config/config';
+import Todo from '../models/todo';
 
 
 const validateToken = (req: Request, res: Response, next: NextFunction) => {
-   extractJWT
+
+    let token = req.headers.authorization?.split(' ')[1];
+
+    if (token) {
+        jwt.verify(token, config.token.secret, async (error, decoded) => {
+            if (error) {
+                return res.status(404).json({
+                    message: error,
+                    error
+                });
+            } else {
+
+                let user;
+
+                res.locals.jwt = decoded;
+
+                console.log(decoded)
+
+                user = await User.findOne({ email: res.locals.jwt.email }).select('-password')
+
+                return res.status(200).json({
+                    user
+                });
+            }
+        });
+    } else {
+        return res.status(401).json({
+            message: 'Unauthorized'
+        });
+    }
 };
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
@@ -17,7 +47,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 
     const userExists = await User.findOne({ email: email });
 
-    if(!name){
+    if (!name) {
         return res.status(409).json({ message: 'Name is required' });
     }
 
@@ -118,6 +148,36 @@ const getAllUsers = (req: Request, res: Response, next: NextFunction) => {
                 error
             });
         });
-}; 
+};
 
-export default { validateToken, register, login, getAllUsers };
+const getUserTodos = async (req: Request, res: Response, next: NextFunction) => {
+
+    let token = req.headers.authorization?.split(' ')[1];
+
+    if (token) {
+        jwt.verify(token, config.token.secret, async (error, decoded) => {
+            if (error) {
+                return res.status(404).json({
+                    message: error,
+                    error
+                });
+            } else {
+
+                res.locals.jwt = decoded;
+
+                Todo.where({ user: new mongoose.Types.ObjectId(res.locals.jwt.id) })
+                    .find((err, todos) => {
+                        res.json(todos);
+                    })
+            }
+        });
+    } else {
+        return res.status(401).json({
+            message: 'Unauthorized'
+        });
+    }
+
+}
+
+
+export default { validateToken, register, login, getAllUsers, getUserTodos };
