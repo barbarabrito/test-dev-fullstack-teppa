@@ -15,7 +15,7 @@
 
 .container-login button{
     padding:  10px;
-    background-color: rgb(91, 142, 201);
+    background-color: #6775dd;
     border: none;
     color: #fff;
     cursor: pointer;
@@ -26,7 +26,7 @@
 .container-login a{
     font-size: 14px;
     text-decoration: none;
-    color: rgb(91, 142, 201);
+    color: #6775dd;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-top: 7px;
 }

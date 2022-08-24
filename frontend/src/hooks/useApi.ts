@@ -29,17 +29,28 @@ export const useApi = () => ({
           });
         return response.data;
     },
-    createTodo: async (text:any, token:string) => {
-        const response = await api.post('/todo/create', {text}, {
+    createTodo: async (text:string, done:boolean , token:string) => {
+        const response = await api.post('/todo/create', {text, done},{
             headers: {
               'Authorization': `token ${token}`
             }
           });
         return response.data;
     },
-    updateTodos: async (id: string, token :string) => {
-        const response = await api.put(`/users/todos${id}`, `Bearer ${token}`,{ headers: {"Authorization" : `Bearer ${token}`} });
+    updateTodos: async (id: string, done:boolean, token :string) => {
+        const response = await api.put(`todo/${id}`, {done}, {
+            headers: {
+              'Authorization': `token ${token}`
+            }
+          });
         return response.data; 
+    },
+    removeTodo: async (id: string, token:string) => {
+      const response = await api.delete(`todo/${id}`, {
+        headers: {
+          'Authorization': `token ${token}`
+        }
+      });
+      return response.data;
     }
-
 });

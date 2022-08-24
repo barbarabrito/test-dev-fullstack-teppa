@@ -2,3 +2,44 @@
     font-family: 'Poppins', sans-serif;
     padding: 2em;
 }
+
+#delete-todo-btn{
+    background-color: transparent;
+    border: none;
+    color: rgb(231, 84, 84);
+    font-size: 22px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.container-main-todos ul{
+    list-style: none;
+    display: block;
+}
+
+.container-main-todos li{
+    margin-bottom: 10px;
+}
+
+.container-main-todos input{
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 2px solid #7f88cc;
+    outline: none;
+}
+
+.container-main-todos input::placeholder{
+   text-align: center;
+   color: #4752a0;
+}
+
+.todos{
+    margin-top: 20px;
+}
+
+@media (max-width: 600px){
+    .todos{
+        text-align: left;
+    }
+    
+}

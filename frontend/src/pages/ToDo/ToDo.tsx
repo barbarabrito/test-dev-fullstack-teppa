@@ -3,6 +3,7 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 import './ToDo.css';
 import { useApi } from "../../hooks/useApi";
 import { TodoItem } from "../../types/Todo";
+import { IoMdTrash } from "react-icons/io";
 
 export const ToDo = () => {
 
@@ -12,7 +13,7 @@ export const ToDo = () => {
 
     const storageData = localStorage.getItem('authToken');
 
-    const [todos, setTodos] = useState<TodoItem[]>([{ _id: '0', text: '', done:false }]);
+    const [todos, setTodos] = useState<TodoItem[]>([{ _id: '0', text: '', done: false }]);
     const [inputValue, setInputValue] = useState('');
 
     if (auth.user?._id) {
@@ -38,45 +39,75 @@ export const ToDo = () => {
         }
     }
 
-    const addTodo = async (e:FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const updateToDo = async (todo: any) => {
+
+        const data = { id: todo._id, done: !todo.done };
 
         if (storageData) {
-            //  console.log(typeof inputValue)
-            await api.createTodo( inputValue, (storageData) )
-            .then(response => {
-                setTodos([...todos]);
-                setInputValue('');
-              }).catch(error => {
-                console.log(error)
-            })
+
+            await api.updateTodos(todo._id, data.done, (storageData))
+                .then(() => {
+                    const newTodos = todos.map(task => {
+
+                        task.done = !task.done;
+
+                        return task;
+                    });
+                    setTodos([...newTodos]);
+                });
         }
     }
 
+    const addTodo = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (storageData) {
+            await api.createTodo(inputValue, false, (storageData))
+                .then(response => {
+                    setTodos([...todos]);
+                    setInputValue('');
+                }).catch(error => {
+                    console.log(error)
+                })
+        }
+    }
+
+    const removeTodo = async (id: string) => {
+
+        if (storageData) {
+
+            await api.removeTodo(id, (storageData))
+                .then(response => {
+                    const updatedTodos = todos.filter((todo) => todo._id != id)
+                    setTodos(updatedTodos)
+                    return response.data
+                }).catch(error => {
+                    console.log(error)
+                })
+        }
+    }
 
     return (
         <div className="container-main-todos">
             <form onSubmit={e => addTodo(e)}>
-                <input placeholder={'What do you want to do?'}
+                <input placeholder="What are you gonna do?"
                     value={inputValue}
                     onChange={e => setInputValue(e.target.value)} />
             </form>
-            <ul>
-                {todos.map((todo) => (
-                    <li key={todo._id}>
-                        <input type={'checkbox'}
-                            defaultChecked={todo.done}
-                            
-                            // onClick={() => updateToDo(todo)}
-
-                        />
-                        {todo.done ? <del>{todo.text}</del> : todo.text}
-                    </li>
-                ))}
-            </ul>
+            <div className="todos">
+                <ul>
+                    {todos.map((todo) => (
+                        <li key={todo._id}>
+                            <input type="checkbox"
+                                defaultChecked={todo.done}
+                                onClick={() => (updateToDo(todo))}
+                            />
+                            {todo.done ? <del>{todo.text}</del> : todo.text}
+                            <button id="delete-todo-btn" onClick={(e) => { removeTodo(todo._id) }}><IoMdTrash /></button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
-
-
     );
 }
-

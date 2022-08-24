@@ -11,7 +11,7 @@ nav li{
 }
 
 nav a{
-    color: rgb(112, 160, 223);
+    color: #7f88cc;
     margin: 0 10px;
     text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -20,7 +20,7 @@ nav a{
 
 nav a:hover{
     text-decoration: none;
-    color: rgb(92, 148, 221);
+    color: rgb(145, 154, 167);
 }
 
 #hr-nav{
@@ -52,12 +52,12 @@ nav a:hover{
 #btn-logout, #login{
     background-color: transparent;
     border: none;
-    color: rgb(112, 160, 223);
+    color: #7f88cc;
     cursor: pointer;    
     font-size: 16px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #btn-logout:hover{
-    color: rgb(112, 160, 223);
+    color: rgb(145, 154, 167);
 }
