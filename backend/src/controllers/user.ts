@@ -26,8 +26,6 @@ const validateToken = (req: Request, res: Response, next: NextFunction) => {
 
                 res.locals.jwt = decoded;
 
-                console.log(decoded)
-
                 user = await User.findOne({ email: res.locals.jwt.email }).select('-password')
 
                 return res.status(200).json({

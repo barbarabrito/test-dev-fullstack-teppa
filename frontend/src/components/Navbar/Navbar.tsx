@@ -21,14 +21,14 @@ const Navbar = () => {
                         </li>
                         {auth.authenticated &&
                         <li>
-                            <Link to="/private">Dashboard</Link>
+                            <Link to="/todo">Dashboard</Link>
                         </li>}
                     </ul>
                 </div>
                 <div className="auth-nav">
                     <ul>
                         <li>
-                            {auth.authenticated ? <button id="btn-logout" onClick={handleLogout}>Sair</button> :
+                            {auth.authenticated ? <button id="btn-logout" onClick={handleLogout}>Logout</button> :
                             <Link id="btn-login" to="/">Login</Link> }
                         </li>
                     </ul>

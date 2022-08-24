@@ -32,7 +32,9 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
         if (data.user && data.token){
             
             setUser(data.user);
+            console.log(data.user)
             setToken(data.token);
+            console.log(data.token);
             return true;
         }
         return false;

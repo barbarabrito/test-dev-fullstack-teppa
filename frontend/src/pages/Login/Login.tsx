@@ -18,7 +18,7 @@ export const Login = () => {
             try {
                 const isLogged = await auth.signin(email, password);
                 if (isLogged) {
-                    navigate("/private");
+                    // navigate("/");
                     window.location.href = window.location.href;   
                 } else {
                     alert("something went wrong");
@@ -28,7 +28,6 @@ export const Login = () => {
             }
         }
     };
-
 
     return (
         <div className="container-login">
@@ -49,7 +48,7 @@ export const Login = () => {
                 placeholder="Your password"
             />
             <button onClick={handleLogin}>Logar</button>
-            <a href="/register">Não possui uma conta? Cadastre-se</a>
+            <a href="/register">Don't have an account? Sign-in</a>
         </div>
     );
 };

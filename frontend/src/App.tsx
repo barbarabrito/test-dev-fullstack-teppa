@@ -1,7 +1,7 @@
 import './App.css'
 import { Route, Routes, Link } from 'react-router-dom'
 import { Home } from './pages/Home/Home';
-import { Private } from './pages/Private/Private';
+import { ToDo } from './pages/ToDo/ToDo';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
 import { useContext } from 'react';
 import { AuthContext } from './contexts/Auth/AuthContext';
@@ -19,7 +19,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/register" element={<Register/>} />
-                <Route path="/private" element={<RequireAuth><Private /></RequireAuth>}/>
+                <Route path="/todo" element={<RequireAuth><ToDo/></RequireAuth>}/>
                 <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
             </Routes>
         </div>
