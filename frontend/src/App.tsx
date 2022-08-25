@@ -20,7 +20,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/register" element={<Register/>} />
                 <Route path="/todo" element={<RequireAuth><ToDo/></RequireAuth>}/>
-                <Route path='/welcome' element={<RequireAuth><WelcomeToApp/></RequireAuth>}/>
+                <Route path="/welcome" element={<RequireAuth><WelcomeToApp/></RequireAuth>}/>
             </Routes>
         </div>
     )
