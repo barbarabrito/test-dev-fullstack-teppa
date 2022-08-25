@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { AuthContext } from './contexts/Auth/AuthContext';
 import Navbar from './components/Navbar/Navbar';
 import Register from './pages/Register/Register';
-import { Profile } from './pages/Profile/Profile';
+import { WelcomeToApp } from './pages/WelcomeToApp/WelcomeToApp';
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/register" element={<Register/>} />
                 <Route path="/todo" element={<RequireAuth><ToDo/></RequireAuth>}/>
-                <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
+                <Route path='/welcome' element={<RequireAuth><WelcomeToApp/></RequireAuth>}/>
             </Routes>
         </div>
     )

@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
-import Logo from '../../assets/shortcut-script-app.png'
+import Logo from '../../assets/to-do-list.png'
 
 import './Login.css';
 
@@ -11,6 +11,16 @@ export const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isMessage, setIsMessage] = useState(false);
+
+
+    const Message = () => {
+        return(
+            <div className="msg-container">
+                <p>Incorrect username or password</p>
+            </div>
+        )
+    }
 
     const handleLogin = async () => {
 
@@ -18,18 +28,25 @@ export const Login = () => {
             try {
                 const isLogged = await auth.signin(email, password);
                 if (isLogged) {
-                    // navigate("/");
+                    navigate("/welcome");
                     window.location.href = window.location.href;   
                 } else {
-                    alert("something went wrong");
+                    console.log("something went wrong");
                 }
             } catch (error) {
+
                 console.log(error);
+                setIsMessage(true);
+
+                setTimeout(() => {
+                    setIsMessage(false);
+                }, 3000)
             }
         }
     };
 
     return (
+
         <div className="container-login">
             <div className="container-logo">
                 <img src={Logo} alt="logo" id="logo"></img>
@@ -49,6 +66,7 @@ export const Login = () => {
             />
             <button onClick={handleLogin}>Logar</button>
             <a href="/register">Don't have an account? Sign-in</a>
+            {isMessage && <Message/>}
         </div>
     );
 };

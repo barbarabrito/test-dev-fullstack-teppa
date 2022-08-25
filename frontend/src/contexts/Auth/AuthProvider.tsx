@@ -16,7 +16,6 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
             
             if (storageData) {
                 const data = await api.validateToken(storageData);
-                // console.log(storageData)
                 if (data.user) {
                     setAuthenticated(true)
                     setUser(data.user)
@@ -34,7 +33,6 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
             setUser(data.user);
             console.log(data.user)
             setToken(data.token);
-            console.log(data.token);
             return true;
         }
         return false;

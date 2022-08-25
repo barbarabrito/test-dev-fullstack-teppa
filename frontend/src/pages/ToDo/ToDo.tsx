@@ -31,7 +31,6 @@ export const ToDo = () => {
             await api.getTodos(storageData)
                 .then(response => {
                     setTodos(response)
-                    console.log(todos)
                     return todos
                 }).catch(error => {
                     console.log(error)
@@ -39,22 +38,24 @@ export const ToDo = () => {
         }
     }
 
-    const updateToDo = async (todo: any) => {
+    const updateToDoCompleteness_ = async (todo: any) => {
 
-        const data = { id: todo._id, done: !todo.done };
+        const data = { id:todo._id, done:!todo.done };
 
         if (storageData) {
 
-            await api.updateTodos(todo._id, data.done, (storageData))
-                .then(() => {
-                    const newTodos = todos.map(task => {
-
+            await api.updateTodoCompleteness(todo._id, data.done, (storageData))
+            .then(() => {
+                const newTodos = todos.map(task => {
+                    
+                    if (task._id === todo._id) {
                         task.done = !task.done;
-
-                        return task;
-                    });
-                    setTodos([...newTodos]);
+                    }
+                  
+                  return task;
                 });
+                setTodos([...newTodos]);
+              });
         }
     }
 
@@ -100,9 +101,9 @@ export const ToDo = () => {
                         <li key={todo._id}>
                             <input type="checkbox"
                                 defaultChecked={todo.done}
-                                onClick={() => (updateToDo(todo))}
+                                onClick={() => updateToDoCompleteness_(todo)}
                             />
-                            {todo.done ? <del>{todo.text}</del> : todo.text}
+                             {todo.done ? <del>{todo.text}</del> : todo.text}
                             <button id="delete-todo-btn" onClick={(e) => { removeTodo(todo._id) }}><IoMdTrash /></button>
                         </li>
                     ))}

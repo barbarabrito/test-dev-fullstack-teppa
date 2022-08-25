@@ -5,8 +5,8 @@
     "main": "src/server.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon src/server.ts",
-        "build": "rm -rf build/ && tsc"
+        "start": "node build/server.js",
+        "postinstall": "tsc"
     },
     "author": "bárbara m a brito",
     "license": "ISC",

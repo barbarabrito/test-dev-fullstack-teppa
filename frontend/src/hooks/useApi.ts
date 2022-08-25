@@ -37,8 +37,8 @@ export const useApi = () => ({
           });
         return response.data;
     },
-    updateTodos: async (id: string, done:boolean, token :string) => {
-        const response = await api.put(`todo/${id}`, {done}, {
+    updateTodoCompleteness: async (id:string, done:boolean, token:string) => {
+        const response = await api.put(`todo/${id}`, {done},{
             headers: {
               'Authorization': `token ${token}`
             }

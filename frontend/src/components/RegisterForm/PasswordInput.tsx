@@ -23,7 +23,7 @@ const PasswordInput = ({ formData, setFormData, setDisableNext }: any) => {
                 <label>Choose a password</label>
             </div>
             <input
-                type="text"
+                type="password"
                 placeholder="Password..."
                 value={formData.password}
                 onChange={(event) =>
@@ -31,7 +31,7 @@ const PasswordInput = ({ formData, setFormData, setDisableNext }: any) => {
                 }
             />
             <input
-                type="text"
+                type="password"
                 placeholder="Confirm password..."
                 value={formData.confirmPassword}
                 onChange={(event) =>

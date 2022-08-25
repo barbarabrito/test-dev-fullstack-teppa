@@ -61,7 +61,6 @@ const RegisterForm = () => {
                             if (page === FormTitles.length - 1) {
                                 handleRegister();
                                 setShowMessage(true);
-                                console.log(formData);
                             } else {
                                 setPage((currPage) => currPage + 1);
                             }

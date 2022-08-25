@@ -18,6 +18,10 @@ const createTodo = async (req: Request, res: Response, next: NextFunction) => {
                 });
             } else {
 
+                if (!req.body.text) {
+                    return res.status(409).json({ message: 'Text is required' });
+                }
+
                 res.locals.jwt = decoded;
 
                 const todo = new Todo({
