@@ -18,9 +18,9 @@ Tecnologias que utilizei:
 ## Demonstração
 
 #### Página de login
-![preview login](preview/login.png)
+![preview login](preview/login_screen.png)
 
-####
+#### Página de To-Do
 ![preview todos](preview/todos.png)
 
 Front-End hospedado em [https://test-dev-fullstack-todo.vercel.app](https://test-dev-fullstack-todo.vercel.app)

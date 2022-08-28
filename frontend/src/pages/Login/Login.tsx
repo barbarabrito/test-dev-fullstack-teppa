@@ -65,7 +65,7 @@ export const Login = () => {
                 placeholder="Your password"
             />
             <button onClick={handleLogin}>Logar</button>
-            <a href="/register">Don't have an account? Sign-in</a>
+            <a href="/register">Don't have an account? Sign up.</a>
             {isMessage && <Message/>}
         </div>
     );

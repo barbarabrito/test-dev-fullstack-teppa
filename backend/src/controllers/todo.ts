@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import { config } from '../config/config';
 import Todo from '../models/todo';
-import User from '../models/user';
 
 const createTodo = async (req: Request, res: Response, next: NextFunction) => {
 

@@ -3,7 +3,6 @@ import bcrypt from 'bcryptjs';
 import mongoose from 'mongoose';
 import User from '../models/user';
 import signJWT from '../utils/signJWT';
-import extractJWT from '../middleware/extractJWT';
 import jwt from 'jsonwebtoken';
 import { config } from '../config/config';
 import Todo from '../models/todo';
